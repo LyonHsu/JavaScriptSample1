@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--  
+	Ref:
+	https://ithelp.ithome.com.tw/articles/10191765
+	
+-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Sample 1</title>
+		<script language="javascript" type="text/javascript" src='js/main.js'></script>
+	</head>
+	<body>
+		<h2>內容開始:<br></h2>
+		<h1 id="hello"></h1>
+		<script>
+			var sss=''
+			for(var i=0;i<10;i++)
+				sss =sss+ '['+i+']Hello World!'+"<br>"
+			document.querySelector('#hello').textContent = sss
+			document.getElementById("hello").innerHTML= sss
+			
+		</script>
+		
+		<p><span>span 1</span><span> span 2</span><span> span 3</span></p>
+		
+		<script>
+		  var p = document.querySelector('p');
+		
+		  // tagName 屬性可以取得 node 的標籤名稱
+		  console.log("tagName 屬性可以取得 node 的標籤名稱:"+p.firstChild.tagName);      // undefined
+		</script>
+	</body>
+</html>
