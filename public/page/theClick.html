@@ -46,5 +46,16 @@
 			  console.log('Child Bubbling');
 			}, false);
 		</script>
+		
+		<input id="textBox" type="button">點擊Enter鍵</div>
+		<script>
+		var textBox = document.getElementById('textBox');
+		textBox.addEventListener('keydown', function(e){
+			  // enter 的 keyCode 是 13
+			  if( e.keyCode === 13 ){
+			    console.log("你點擊了Enter 鍵！");
+			  }
+			}, false);
+		</script>
 	</body>
 </html>

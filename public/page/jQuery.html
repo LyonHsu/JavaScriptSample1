@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>上下左右鍵移動輸入焦點</title>
+	</head>
+	<body>
+	
+		<script type='text/javascript' 
+		src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js'></script>   
+		<script type="text/javascript">
+		    $(function() {
+		        var baseIndex = 100;
+		        $("#tblGrid")
+		        .find("tr").each(function(r) {
+		            $(this).find("td").each(function(c) {
+		                $(this).find("input")
+		                .attr("tabindex", r * 100 + c + baseIndex)
+		                .addClass("cGridInput");
+		            });
+		        });
+		        $("#tblGrid .cGridInput").live("keydown", function(evt) {
+		            var tabIndex = parseInt($(this).attr("tabindex"));
+		            switch (evt.which) {
+		                case 38: //上
+		                    tabIndex -= 100;
+		                    break;
+		                case 40: //下
+		                    tabIndex += 100;
+		                    break;
+		                case 37: //左(會導致輸入時無法使用左右移)
+		                    tabIndex--;
+		                    break;
+		                case 39: //右(會導致輸入時無法使用左右移)
+		                    tabIndex++;
+		                    break;
+		                default:
+		                    return;
+		            }
+		            if (tabIndex > 0) {
+		                $(".cGridInput[tabindex=" + tabIndex + "]").focus();
+		                return false;
+		            }
+		            return true;
+		        });
+		    });
+		</script>
+		<table id="tblGrid">
+			<tr><td><input autofoucs/></td><td><input /></td><td><input /></td><td><input /></td></tr>
+			<tr><td><input /></td><td><input /></td><td><input /></td><td><input /></td></tr>
+			<tr><td><input /></td><td><input /></td><td><input /></td><td><input /></td></tr>
+		</table>
+	</body>
+</html>
