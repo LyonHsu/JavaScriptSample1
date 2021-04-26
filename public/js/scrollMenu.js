@@ -7,6 +7,7 @@
  var isOpen=false;
  //偵測瀏覽器版本
  var browser = navigator.appName;
+ var menuindex=-1;
  if(browser === "Netscape"){//如果瀏覽器是 Netscape or fireFox
  	//開始監聽鍵盤動作
  	document.captureEvents(Event.KEYDOWN);
@@ -15,38 +16,61 @@
  		var focusedElement = document.activeElement //[注意]activeElement该属性IE浏览器不支持
  		document.getElementById("logcontent").textContent=""+focusedElement.id;
  		var tabIndex = focusedElement.tabIndex;
+ 		if(menuindex===-1){
+ 			menuindex = tabIndex;
+ 		}
  		switch(event.which){
  			case 38: //上
                 tabIndex--;
+                if(tabIndex<0){
+                	tabIndex=0;
+                }
                 break;
             case 40: //下
                 // focus next input elements
 		       tabIndex++;
+		       var tabbables = document.getElementById("mySidenav");
+		       if(tabIndex>=tabbables.childElementCount){
+			       	tabIndex=0;
+			       	if(menuindex===-1){
+			 			menuindex = tabIndex;
+			 		}
+		       }
                 break;
             case 37: //左(會導致輸入時無法使用左右移)
-                document.getElementById("member").focus();
+                var tabbables = document.getElementById("mySidenav");
+                var nextFocus = tabbables.children[menuindex].children[0];
+                nextFocus.focus();
                 openNav();
                 break;
             case 39: //右(會導致輸入時無法使用左右移)
                  document.getElementById("button").focus();
+                 focusedElement = document.activeElement
+                 tabIndex = focusedElement.tabIndex;
                  closeNav();
+                 var is = isInt();
+                 console.log("關閉側欄 :"+is); 
+                 
                 break;
             default:
                 return;
  		}
  		document.getElementById("logcontent2").innerHTML=document.getElementById("logcontent2").textContent+"; <br>"+tabIndex;
  		if (tabIndex >= 0) {
- 			var nextFocus;
- 			var tabbables = document.getElementById("mySidenav"); //get all tabable elements
-		    for(var i=0; i<tabbables.childElementCount; i++) { //loop through each element
-		        if(tabbables.children[i].children[0].tabIndex == (tabIndex)) { //check the tabindex to see if it's the element we want
-		        	nextFocus = tabbables.children[i].children[0];
-		            nextFocus.focus(); //if it's the one we want, focus it and exit the loop
-		            break;
-		        }
-		    }
-            document.getElementById("logcontent2").innerHTML=document.getElementById("logcontent2").textContent+"; <br>"+nextFocus.id;
-            return false;
+ 			if(tabIndex<10 ){
+	 			var nextFocus;
+	 			var tabbables = document.getElementById("mySidenav"); //get all tabable elements
+			    for(var i=0; i<tabbables.childElementCount; i++) { //loop through each element
+			        if(tabbables.children[i].children[0].tabIndex == (tabIndex)) { //check the tabindex to see if it's the element we want
+			        	nextFocus = tabbables.children[i].children[0];
+			            nextFocus.focus(); //if it's the one we want, focus it and exit the loop
+			            menuindex = i;
+			            break;
+			        }
+			    }
+	            document.getElementById("logcontent2").innerHTML=document.getElementById("logcontent2").textContent+"; <br>"+nextFocus.id;
+	            return false;
+ 			}
         }
  	}
  }else{
@@ -95,4 +119,8 @@
 		
 		function onselect(){
 			console.log("js列印 會員專區被選擇 Log 出來");      
+		}
+		
+		function isInt(){
+			return 0;
 		}

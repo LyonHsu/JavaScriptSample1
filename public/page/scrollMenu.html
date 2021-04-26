@@ -17,14 +17,14 @@
 <body>
 	<p>
 		<div id="mySidenav" class="sidenav" style="width: 250px;" tabindex="0">
-		  <span role="checkbox" aria-checked="true" tabindex="-1">
-		  	<a href="javascript:void(0)" class="closebtn" tabindex="-1" onclick="closeNav()">&times;</a>
+		  <span role="checkbox" aria-checked="true" tabindex="5">
+		  	<a href="javascript:void(0)" class="closebtn" tabindex="5" onclick="closeNav()">&times;</a>
 		  </span>
 		  <span role="checkbox" aria-checked="true" tabindex="0" onselect="onselect()">
 			<a href="#" id="member" onclick="memberOnClick()" tabindex="0" onselect="onselect()" nextfocusdown="recommend" autofocus>會員專區</a>
 		  </span>
 	  	  <span role="checkbox" aria-checked="true" tabindex="1">
-			  <a id="recommend" href="#" onclick="recommendOnClick()"tabindex="1" >推薦</a>
+			  <a id="recommend" href="#" onclick="recommendOnClick()" tabindex="1" >推薦</a>
 		  </span>
 		  <span role="checkbox" aria-checked="true" tabindex="2">
 		  	<a id="rank" href="#"  tabindex="2">排行榜</a>
@@ -42,7 +42,7 @@
 	  <p>点击以下菜单图标打开侧边栏，主体内容向右偏移。</p>
 	  <span style="font-size:30px;cursor:pointer" onclick="OpenOrClose()">&#9776; 打開</span>
 	  <p id="demo">這是一個段落</p>	
-	  <button id="button" type="button" onclick="displayDate()">顯示日期</button>
+	  <button id="button" type="button" onclick="displayDate()" tabindex="11">顯示日期</button>
 	  <div id="logcontent"> </div><br>
 	  <div id="logcontent2"> </div>
 	</div>

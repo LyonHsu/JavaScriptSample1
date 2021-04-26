@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/style.css">
+<script type="text/javascript" src="../js/scrollMenu.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+	<p>
+		<div id="mySidenav" class="sidenav" style="width: 250px;" tabindex="0">
+		  <span role="checkbox" aria-checked="true" tabindex="-1">
+		  	<a href="javascript:void(0)" class="closebtn" tabindex="-1" onclick="closeNav()">&times;</a>
+		  </span>
+		  <span role="checkbox" aria-checked="true" tabindex="0" onselect="onselect()">
+			<a href="#" id="member" onclick="memberOnClick()" tabindex="0" onselect="onselect()" nextfocusdown="recommend" autofocus>會員專區</a>
+		  </span>
+	  	  <span role="checkbox" aria-checked="true" tabindex="1">
+			  <a id="recommend" href="#" onclick="recommendOnClick()"tabindex="1" >推薦</a>
+		  </span>
+		  <span role="checkbox" aria-checked="true" tabindex="2">
+		  	<a id="rank" href="#"  tabindex="2">排行榜</a>
+		  </span>
+		  <span role="checkbox" aria-checked="true" tabindex="3">
+		  	<a href="#" tabindex="3">電視直播</a>
+		  </span>
+		  <span role="checkbox" aria-checked="true" tabindex="4">
+			<a href="#"  tabindex="4">Contact</a>
+		  </span>
+		</div>
+	</p>	
+</body>
+</html>
